@@ -187,5 +187,11 @@ function mostPointsScored(){
 }
 
 function winningTeam(){
-    return teams()[0]
+    let homePoints = Object.values(teams()[0].players).reduce((acc,player) => {
+        return acc + player.points
+    },0)
+    let awayPoints = Object.values(teams()[1].players).reduce((acc,player) => {
+        return acc + player.points
+    },0)
+    return (homePoints > awayPoints) ? gameObject()['home'].teamName : gameObject()['away'.teamName]
 }
