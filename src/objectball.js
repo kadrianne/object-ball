@@ -195,3 +195,16 @@ function winningTeam(){
     },0)
     return (homePoints > awayPoints) ? gameObject()['home'].teamName : gameObject()['away'.teamName]
 }
+
+function playerWithLongestName(){
+    return allPlayerStats().reduce((acc,player) => {
+        return (player.playerName.length > acc.playerName.length) ? player : acc
+    },{playerName:""}).playerName
+}
+
+function doesLongNameStealATon(){
+    let playerWithMostSteals = allPlayerStats().reduce((acc,player) => {
+        return (player.steals > acc.steals) ? player : acc
+    },{steals:-1}).playerName
+    return (playerWithLongestName() == playerWithMostSteals) ? true : false
+}
